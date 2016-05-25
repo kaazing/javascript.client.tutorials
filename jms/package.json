@@ -17,6 +17,7 @@
   "author": "Kaazing Corporation",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.13.4",
     "jquery": "^2.2.3",
     "kaazing-javascript-gateway-client": "^4.4.2",
     "kaazing-javascript-jms-client": "^4.4.2",
