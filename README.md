@@ -1,11 +1,7 @@
-# Kaazing JavaScript Client Tutorials
+# Kaazing WebSocket Tutorials for JavaScript
 
-To run these tutorial apps, do the following:
+This repository contains solutions for building JavaScript client applications for Android, iOS Classic an iOS Unified using Kaazing WebSocket API.
+- [Kaazing AMQP Websocket Application](amqp)
+- [Kaazing JMS WebSocket Applications](jms)
+- [Kaazing WebSocket Applications](ws)
 
-0. Clone or download the repo.
-0. In a terminal, navigate to the folder for a tutorial, such as `javascript.client.tutorials/jms`.
-0. Enter `npm install` to build the tutorial. You might need to execute the command with admin credentials. If you need to install Node.js&reg; and update npm, see [https://docs.npmjs.com/getting-started/installing-node](https://docs.npmjs.com/getting-started/installing-node).
-0. Enter `node server.js` to run the included Node.js&reg; server component (server.js).
-0. In a browser, enter the URL `http://localhost:3000/`.
-
-The demo will be displayed.
