@@ -21,7 +21,7 @@ This tutorial shows how JavaScript application can communicate over the web with
 
 ## Interact with Kaazing JavaScript WebSocket Client API
 
-Tutorial how to create Kaazing JavaScript WebSocket JMS application from scratch, to be able to send and receive messages over WebSocket, can be found [here] (http://kaazing.com/doc/5.0/jms_client_docs/dev-js/o_dev_js.html)
+Checklist how to create Kaazing JavaScript WebSocket JMS application from scratch, to be able to send and receive messages over WebSocket, can be found [here] (http://kaazing.com/doc/5.0/jms_client_docs/dev-js/o_dev_js.html)
 
 ## API Documentation
 
