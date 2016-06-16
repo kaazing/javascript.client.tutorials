@@ -20,6 +20,9 @@ The `echo` service, running inside the Kaazing WebSocket Gateway, reflects back 
 * Enter `node server.js` to run the included Node.js server component (server.js).
 * In a browser, open the URL `http://localhost:3000/`.
 
+__Note:__ To test basic authentication for WebSocket connection in demo app use URL -  wss://sandbox.kaazing.net/echo-auth for location. 
+
+
 ## Interact with Kaazing JavaScript WebSocket Client API
 
 Checklist how to create Kaazing JavaScript WebSocket from scratch, to be able to send and receive messages

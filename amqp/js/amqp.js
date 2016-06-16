@@ -139,7 +139,7 @@ $(document).ready(function () {
 	propPriority.find('option[value="6"]').attr("selected", true);
 
 
-	url.val("ws://sandbox.kaazing.net/amqp091");
+	url.val("wss://sandbox.kaazing.net/amqp091");
 
 	// Pick a random starting point for the counter, to minimize collisions
 	// with other demo clients.
