@@ -13,13 +13,14 @@ sudo npm install npm -g
 `
 
 
-## Steps for building the project
+## Steps for building and running the project
 
 * In a terminal, navigate to the folder for a tutorial, such as `javascript.client.tutorials/amqp`.
 * Enter `npm install` to build the tutorial.
 * Enter `node server.js` to run the included Node.js server component (server.js).
 * In a browser, open the URL `http://localhost:3000/`.
-
+ 
+__Note:__ To test basic authentication for WebSocket connection in demo app use URL -  wss://sandbox.kaazing.net/amqp091-auth for location.
 
 ## Interact with Kaazing JavaScript WebSocket Client API
 
