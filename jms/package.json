@@ -1,5 +1,5 @@
 {
-  "name": "websocket-jms-demo",
+  "name": "websocket-jms-tutorial",
   "version": "1.0.0",
   "description": "Demo application for Kaazing WebSocket JMS client library",
   "main": "index.html",
