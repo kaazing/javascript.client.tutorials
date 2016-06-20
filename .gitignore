@@ -82,3 +82,7 @@ DerivedData
 *.x86_64
 *.hex
 
+
+amqp/node_modules/
+jms/node_modules/
+ws/node_modules/

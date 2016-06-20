@@ -1,0 +1,324 @@
+<!--
+
+    Copyright (c) 2007-2014, Kaazing Corporation. All rights reserved.
+
+-->
+
+<!DOCTYPE html>
+<head>
+	<!--
+
+		Copyright (c) 2007-2014, Kaazing Corporation. All rights reserved.
+
+	-->
+	<!--[if lt IE 7]>
+	<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+	<!--[if IE 7]>
+	<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+	<!--[if IE 8]>
+	<html class="no-js lt-ie9"> <![endif]-->
+	<!--[if gt IE 8]><!-->
+	<html class="no-js"> <!--<![endif]-->
+	<head>
+
+		<!-- Required for IE6/IE7 cross-origin support -->
+		<meta name="kaazing:postMessageBridgeURL" content="PostMessageBridge.html">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="icon" href="images/favicon.ico">
+		<title>Kaazing | Demos</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/dev.css">
+		<link rel="stylesheet" href="css/demo.css">
+
+		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script src="node_modules/npm-modernizr/modernizr.js"></script>
+
+		<script type="text/javascript" language="javascript"
+				src="node_modules/kaazing-javascript-gateway-client/WebSocket.js"></script>
+		<script type="text/javascript" language="javascript"
+				src="node_modules/kaazing-javascript-amqp-client/AmqpClient.js"></script>
+		<style type="text/css" media="screen">
+			#middle input {
+				width: auto;
+				margin-right: 10px;
+			}
+
+			#middle label {
+				width: auto;
+				text-align: left;
+				margin-right: 0px;
+			}
+		</style>
+		<script type="text/javascript" language="javascript" src="js/amqp.js"></script>
+
+		<title>Real-Time Interactive Guide to AMQP</title>
+	</head>
+<body>
+<div class="header-container">
+	<header class="wrapper clearfix">
+		<a href="http://www.kaazing.com" target="_blank">
+			<div class="title logo"></div>
+		</a>
+	</header>
+</div>
+
+<div class="main-container ">
+	<div class="main wrapper clearfix">
+
+		<div class="powered-wrapper">
+			<div class="powered-header"></div>
+		</div>
+
+		<!-- End header -->
+
+		<article>
+			<section>
+				<div id="main_header">
+					<h1>AMQP Messaging Demo for JavaScript</h1>
+
+					<div id="jms-javascript" class="amqp">
+						<div id="middle">
+
+							<div class="leftPanels">
+
+								<div id="login_div" class="panel">
+									<span class="info">Connection details</span><br/>
+									<label for="url">Location</label><input id="url" placeholder="Example: ws://localhost:8001/amqp"/><br/>
+									<label for="username">AMQP Username</label><input id="username" value="guest"
+																					  placeholder="Username on AMQP broker"/><br/>
+									<label for="password">AMQP Password</label><input type="password" id="password" value="guest"
+																					  placeholder="Password on AMQP broker"/><br/>
+									<label for="virtualhost">AMQP Virtual Host</label><input id="virtualhost" value="/"
+																							 placeholder="Virtual host on AMQP broker. Example: /"/><br/>
+									<label></label>
+									<button id="connectBut">Connect</button>
+									<button id="disconnectBut">Close</button>
+									<div id="logindiv">
+										<div class="heading clearfix">
+											<div class="text">Login</div>
+											<div class="image"><img src="images/lock-icon.png" width="56" height="56"></div>
+										</div>
+										<div class="clearfix">
+											<div class="form-labels">
+												<label for="sso_username">Username:</label>
+											</div>
+											<div class="form-fields">
+												<input id="sso_username" size="12" value=""/>
+											</div>
+										</div>
+										<div class="clearfix">
+											<div class="form-labels">
+												<label for="sso_password">Password:</label>
+											</div>
+											<div class="form-fields">
+												<input id="sso_password" type="password" size="12" value=""/><br>
+												<button id="sso_login">OK</button>
+												<button id="sso_cancel">Cancel</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div id="properties_div" class="panel">
+				<span class="info"><a href="javascript:void(0); // Show AMQP Properties" id="propertiesToggle"
+									  class="infoHidden">Show</a> AMQP properties</span><br/>
+									<div id="properties_div_content">
+										<label for="propAppId">appId</label><input id="propAppId" placeholder="Example: My app"/><br/>
+										<label for="propContentEncoding">contentEncoding</label><input id="propContentEncoding"
+																									   placeholder="Example: UTF-8"
+																									   value="UTF-8"/><br/>
+										<label for="propContentType">contentType</label><input id="propContentType"
+																							   placeholder="Example: text/plain"
+																							   value="text/plain"/><br/>
+										<label for="propCorrelationId">correlationId</label><input id="propCorrelationId"
+																								   placeholder="Example: 1"/><br/>
+										<label for="propDeliveryMode">deliveryMode</label>
+										<select id="propDeliveryMode" name="propDeliveryMode">
+											<option value="1" selected>1 (Non-persistent)</option>
+											<option value="2">2 (persistent)</option>
+										</select>
+										<br/>
+										<label for="propExpiration">expiration</label><input id="propExpiration"
+																							 placeholder="Time to live (milliseconds). Example: 60000"/><br/>
+										<label>messageId</label><input type="checkbox" id="propMessageId" name="propMessageId"
+																	   checked/><label class="checkboxLabel" for="propMessageId">Include
+										sequentially generated id</label><br/>
+										<label for="propPriority">priority</label>
+										<select id="propPriority" name="propPriority">
+											<!-- Options will be added dynamically. -->
+										</select>
+										<br/>
+										<label for="propReplyTo">replyTo</label><input id="propReplyTo"
+																					   placeholder="Address to send replies"/><br/>
+										<label>timestamp</label>
+										<input type="checkbox" id="propTimestamp" name="propTimestamp" checked/><label class="checkboxLabel"
+																													   for="propTimestamp">Include
+										timestamp when sending</label><br/>
+										<label for="propType">type</label><input id="propType"
+																				 placeholder="Message type. Example: custom-event"/><br/>
+										<label for="propUserId">userId</label><input id="propUserId"
+																					 placeholder="Id of user publishing the message"/><br/>
+									</div>
+								</div>
+
+								<div id="headers_div" class="panel">
+									<span class="info"><a href="javascript:void(0); // Show Headers" id="headersToggle" class="infoHidden">Show</a> Custom headers</span><br/>
+									<div id="headers_div_content">
+										<label>Header 1</label>
+										<input id="headerName1" placeholder="Name" value="headerKey1"/>
+										<select id="headerType1" name="headerType1">
+											<option value="int" selected>int</option>
+											<option value="String">String</option>
+										</select>
+										<input id="headerValue1" placeholder="Value" value="123"/>
+										<br/>
+										<label>Header 2</label>
+										<input id="headerName2" placeholder="Name" value="headerKey2"/>
+										<select id="headerType2" name="headerType2">
+											<option value="int">int</option>
+											<option value="String" selected>String</option>
+										</select>
+										<input id="headerValue2" placeholder="Value" value="abcde"/>
+										<br/>
+									</div>
+								</div>
+
+								<div id="exchange_div" class="panel">
+									<span class="info">Publish a message to an exchange</span><br/>
+									<label for="consumeExchange">Exchange</label><input id="consumeExchange" value="demo_exchange"/><br/>
+									<label for="consumeMessage">Message</label><input id="consumeMessage" value="Hello, AMQP!"/><br/>
+									<label></label>
+									<button id="sendBut">Publish</button>
+									<button id="flowOnBut">Flow On</button>
+									<button id="flowOffBut">Flow Off</button>
+								</div>
+
+								<div id="transaction_div" class="panel">
+									<span class="info">Publish as a transaction</span><br/>
+									<label for="txExchange">Exchange</label><input id="txExchange" value="demo_txn_exchange"/><br/>
+									<label for="txMessage">Message</label><input id="txMessage" value="Hello transaction message!"/><br/>
+									<label></label>
+									<button id="selectBut">Select</button>
+									<button id="txSendBut">Publish</button>
+									<button id="commitBut">Commit</button>
+									<button id="rollbackBut">Rollback</button>
+								</div>
+
+							</div> <!-- .leftPanels -->
+
+							<div class="rightPanels">
+
+								<div id="console_div" class="panel">
+									<div class="info">
+										<div style="float: left;">
+											Log messages
+										</div>
+										<div style="float: right; margin-right: 5px;">
+											Messages received : <span id="receivedMessageCount">0</span>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div id="console"></div>
+									<button id="clearBut">Clear Log</button>
+									<input type="checkbox" id="toggleAmqpPropsCb" class="cb" style="margin-left: 20px;"><label
+									for="toggleAmqpPropsCb">Show AMQP Properties</label>
+								</div>
+
+							</div>  <!-- .rightPanels -->
+
+							<div class="clearfix"></div>
+
+						</div> <!-- #middle -->
+					</div>
+
+
+				</div>
+			</section>
+		</article>
+	</div>
+</div>
+<div class="footer-container">
+	<footer class="wrapper">
+
+		<div class="section group">
+			<div class="items col span_1_of_5">
+				<h3><a href="http://www.kaazing.com/products/">Kaazing.com</a></h3>
+				<ul>
+					<li><a
+						href="http://www.kaazing.com/products/kaazing-websocket-gateway/">Overview</a>
+					</li>
+					<li><a href="http://www.kaazing.com/products/editions/">Product Editions</a>
+					</li>
+					<li><a href="http://www.kaazing.com/products/benefits-and-roi/">Benefits &
+						ROI</a></li>
+					<li><a href="http://www.kaazing.com/products/deployment-options/">Deployment
+						Options</a></li>
+					<li><a href="http://developer-stage.kaazing.com/product-demos/">Online Demos</a>
+					</li>
+					<li><a href="http://www.kaazing.com/websocket/">WebSocket</a></li>
+				</ul>
+			</div>
+			<div class="items col span_1_of_5">
+				<h3><a href="http://developer.kaazing.com/">Developer</a></h3>
+				<ul>
+					<li><a href="http://developer.kaazing.com/whykaazing/">Why Kaazing</a></li>
+					<li><a href="http://developer.kaazing.com/downloads/">Downloads</a></li>
+					<li><a href="http://developer.kaazing.com/how-tos/">Tech Papers</a></li>
+					<li><a href="http://developer.kaazing.com/forums/">Forums</a></li>
+					<li><a href="http://developer.kaazing.com/product-demos/">Product Demos</a></li>
+					<li><a href="http://tech.kaazing.com/documentation/faq.html">FAQ</a></li>
+					<li><a href="http://tech.kaazing.com/documentation/index.html">Documentation</a>
+					</li>
+				</ul>
+			</div>
+			<div class="items col span_1_of_5">
+				<h3><a href="http://www.kaazing.com/services/">Services</a></h3>
+				<ul>
+					<li><a
+						href="http://www.kaazing.com/services/kaazing-global-support/">Support</a>
+					</li>
+					<li><a href="http://www.kaazing.com/services/consulting/">Consulting</a></li>
+					<li><a href="http://www.kaazing.com/services/training/">Training</a></li>
+				</ul>
+			</div>
+			<div class="items col span_1_of_5">
+				<h3><a href="http://www.kaazing.com/cloud/">Cloud</a></h3>
+				<ul>
+					<li><a href="http://www.kaazing.com/cloud/amis/">AWS AMIS</a></li>
+					<li><a href="http://www.kaazing.com/cloud/faq/">AWS FAQS</a></li>
+				</ul>
+			</div>
+			<div id="contact" class="col span_1_of_5">
+				<h3>Get in Touch</h3>
+				<div class="contact-details">
+					<p>T +1 (877)&shy; KAAZING<br/>
+						T +1 (877)&shy; 522-9464<br/>
+						F +1 (650)&shy; 960-8145</p>
+
+					<p>Worldwide Headquarters<br/>
+						Kaazing Corporation<br/>
+						6001 America Center Drive<br/>
+						Suite 201<br/>
+						San Jose, CA 95002, USA</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="k-bottom clearfix">
+			<a href="#">
+				<div class="logo"></div>
+			</a>
+			<div class="copyright">
+				<!--[if lte IE 7]>&copy; 2007 - 2016 Kaazing Corporation. All Rights Reserved.
+				<![endif]--></div>
+			<div class="powered-footer"></div>
+		</div>
+	</footer>
+</div>
+</body>
+</html>

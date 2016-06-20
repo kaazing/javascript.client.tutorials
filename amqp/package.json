@@ -1,0 +1,26 @@
+{
+  "name": "websocket-amqp-demo",
+  "version": "1.0.0",
+  "description": "Demo application for Kaazing WebSocket AMQP client library",
+  "main": "index.html",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaazing/javascript.client.demos/amqp"
+  },
+  "keywords": [
+    "websocket",
+    "javascript",
+    "kaazing",
+    "amqp"
+  ],
+  "author": "Kaazing Corporation",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jquery": "^2.2.3",
+    "kaazing-javascript-amqp-client": "^4.0.6",
+    "kaazing-javascript-gateway-client": "^4.4.2",
+    "npm-modernizr": "^2.8.3"
+  }
+}

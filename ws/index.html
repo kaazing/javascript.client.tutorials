@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+
+    Copyright (c) 2007-2013, Kaazing Corporation. All rights reserved.
+
+-->
+
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="images/favicon.ico">
+	<title>Kaazing | Demos</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/dev.css">
+	<link rel="stylesheet" href="css/demo.css">
+
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/npm-modernizr/modernizr.js"></script>
+</head>
+<body>
+<!--[if lt IE 9]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+	improve your experience.</p>
+<![endif]-->
+
+<div class="header-container">
+	<header class="wrapper clearfix">
+		<a href="http://www.kaazing.com" target="_blank">
+			<div class="title logo"></div>
+		</a>
+	</header>
+</div>
+
+<div class="main-container ">
+	<div class="main wrapper clearfix">
+
+		<div class="powered-wrapper">
+			<div class="powered-header"></div>
+		</div>
+
+		<!-- End header -->
+
+		<article>
+
+			<section class="demo">
+
+				<!--  Kaazing scripts -->
+				<script type="text/javascript" language="javascript"
+						src="node_modules/kaazing-javascript-gateway-client/WebSocket.js"></script>
+
+				<script type="text/javascript" language="javascript" src="js/ws.js"></script>
+				<div id="echo">
+
+					<h1>JavaScript Echo Demo</h1>
+
+					<p>This demo uses the WebSocket API to send
+						text messages to the Kaazing Gateway Echo service, which echoes back the messages.</p>
+					<div id="location-div" class="clearfix">
+						<div class="form-labels">
+							<label>Location</label>
+						</div>
+						<div class="form-fields">
+							<input id="wsurl" size="40">
+							<button id="connect">Connect</button>
+							<button id="close">Close</button>
+						</div>
+
+						<div id="logindiv">
+							<div class="heading clearfix">
+								<div class="text">Login</div>
+								<div class="image"><img src="images/lock-icon.png" width="56" height="56"></div>
+							</div>
+							<div class="clearfix">
+								<div class="form-labels">
+									<label for="username">Username:</label>
+								</div>
+								<div class="form-fields">
+									<input id="username" size="12" value=""/>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-labels">
+									<label for="password">Password:</label>
+								</div>
+								<div class="form-fields">
+									<input id="password" type="password" size="12" value=""/><br>
+									<button id="login">OK</button>
+									<button id="cancel">Cancel</button>
+								</div>
+							</div>
+						</div> <!-- logindiv -->
+
+					</div> <!-- location-div -->
+
+					<div id="message-div" class="clearfix">
+						<div class="form-labels">
+							<label>Message</label>
+						</div>
+						<div class="form-fields">
+							<input id="message" size="40" value="Hello, WebSocket!"><br/>
+							<button id="sendText">Send Text</button>
+							<button id="sendBlob">Send Blob</button>
+							<button id="sendArrayBuffer">Send Array Buffer</button>
+							<button id="sendByteBuffer">Send Byte Buffer</button>
+						</div>
+					</div>
+
+					<div id="console-div">
+						Log messages
+						<div id="consoleLog"></div>
+						<button id="clear">Clear Log</button>
+					</div>
+
+				</div> <!-- #echo -->
+
+			</section>
+
+		</article>
+
+		<!-- Start footer -->
+
+	</div> <!-- #main -->
+</div> <!-- #main-container -->
+
+<div class="footer-container">
+	<footer class="wrapper">
+
+		<div class="section group">
+			<div class="items col span_1_of_5">
+				<h3><a href="http://www.kaazing.com/products/">Kaazing.com</a></h3>
+				<ul>
+					<li><a href="http://www.kaazing.com/products/kaazing-websocket-gateway/">Overview</a></li>
+					<li><a href="http://www.kaazing.com/products/editions/">Product Editions</a></li>
+					<li><a href="http://www.kaazing.com/products/benefits-and-roi/">Benefits & ROI</a></li>
+					<li><a href="http://www.kaazing.com/products/deployment-options/">Deployment Options</a></li>
+					<li><a href="http://developer-stage.kaazing.com/product-demos/">Online Demos</a></li>
+					<li><a href="http://www.kaazing.com/websocket/">WebSocket</a></li>
+				</ul>
+			</div>
+			<div class="items col span_1_of_5">
+				<h3><a href="http://developer.kaazing.com/">Developer</a></h3>
+				<ul>
+					<li><a href="http://developer.kaazing.com/whykaazing/">Why Kaazing</a></li>
+					<li><a href="http://developer.kaazing.com/downloads/">Downloads</a></li>
+					<li><a href="http://developer.kaazing.com/how-tos/">Tech Papers</a></li>
+					<li><a href="http://developer.kaazing.com/forums/">Forums</a></li>
+					<li><a href="http://developer.kaazing.com/product-demos/">Product Demos</a></li>
+					<li><a href="http://tech.kaazing.com/documentation/faq.html">FAQ</a></li>
+					<li><a href="http://tech.kaazing.com/documentation/index.html">Documentation</a></li>
+				</ul>
+			</div>
+			<div class="items col span_1_of_5">
+				<h3><a href="http://www.kaazing.com/services/">Services</a></h3>
+				<ul>
+					<li><a href="http://www.kaazing.com/services/kaazing-global-support/">Support</a></li>
+					<li><a href="http://www.kaazing.com/services/consulting/">Consulting</a></li>
+					<li><a href="http://www.kaazing.com/services/training/">Training</a></li>
+				</ul>
+			</div>
+			<div class="items col span_1_of_5">
+				<h3><a href="http://www.kaazing.com/cloud/">Cloud</a></h3>
+				<ul>
+					<li><a href="http://www.kaazing.com/cloud/amis/">AWS AMIS</a></li>
+					<li><a href="http://www.kaazing.com/cloud/faq/">AWS FAQS</a></li>
+				</ul>
+			</div>
+			<div id="contact" class="col span_1_of_5">
+				<h3>Get in Touch</h3>
+				<div class="contact-details">
+					<p>T +1 (877)&shy; KAAZING<br/>
+						T +1 (877)&shy; 522-9464<br/>
+						F +1 (650)&shy; 960-8145</p>
+
+					<p>Worldwide Headquarters<br/>
+						Kaazing Corporation<br/>
+						6001 America Center Drive<br/>
+						Suite 250<br/>
+						San Jose, CA 95002, USA</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="k-bottom clearfix">
+			<a href="#">
+				<div class="logo"></div>
+			</a>
+			<div class="copyright"><!--[if lte IE 7]>&copy; 2007 - 2016 Kaazing Corporation. All Rights Reserved.
+				<![endif]--></div>
+			<div class="powered-footer"></div>
+		</div>
+	</footer>
+</div>
+</body>
+</html>
