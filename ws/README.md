@@ -32,5 +32,5 @@ over WebSocket can be found [here] (http://kaazing.com/doc/5.0/websocket_client_
 
 API Documentation for Kaazing JavaScript WebSocket Client library is available:
 
-* [missing](missing)
+* [Javascript Websocket Client API](http://kaazing.com/doc/5.0/websocket_client_docs/apidoc/client/javascript/gateway/index.html)
 
