@@ -1,5 +1,5 @@
 {
-  "name": "websocket-amqp-demo",
+  "name": "websocket-amqp-tutorial",
   "version": "1.0.0",
   "description": "Demo application for Kaazing WebSocket AMQP client library",
   "main": "index.html",

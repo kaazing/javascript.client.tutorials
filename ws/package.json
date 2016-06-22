@@ -1,5 +1,5 @@
 {
-  "name": "websocket-demo",
+  "name": "websocket-echo-tutorial",
   "version": "1.0.0",
   "description": "Demo application for Kaazing WebSocket client library",
   "main": "index.html",
