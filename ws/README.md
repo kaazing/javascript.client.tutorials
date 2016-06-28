@@ -24,8 +24,7 @@ __Note:__ To test basic authentication for the Gateway connection use the URL `w
 
 ## Interact with Kaazing JavaScript WebSocket Client API
 
-Checklist how to create Kaazing JavaScript WebSocket from scratch, to be able to send and receive messages
-over WebSocket can be found [here] (http://kaazing.com/doc/5.0/websocket_client_docs/dev-js/o_dev_js.html)
+Documentation on how to create Kaazing JavaScript WebSocket apps from scratch can be found [here] (http://kaazing.com/doc/5.0/websocket_client_docs/dev-js/o_dev_js.html)
 
 ## API Documentation
 
