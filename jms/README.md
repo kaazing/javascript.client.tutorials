@@ -20,7 +20,6 @@ This JavaScript application communicates with a JMS server via Kaazing WebSocket
 * In a browser, open the URL `http://localhost:3000/`.
 
 __Note:__ To test basic authentication for the connection to the Gateway use the URL `wss://sandbox.kaazing.net/jms-auth` for location.
-
 </br>
 username: tutorial </br>
 password: tutorial 
