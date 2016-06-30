@@ -20,7 +20,8 @@ sudo npm install npm -g
 * In a browser, open the URL `http://localhost:3000/`.
  
 __Note:__ To test basic authentication in the app use the URL `wss://sandbox.kaazing.net/amqp091-auth` for location.
-username: tutorial
+</br>
+username: tutorial</br>
 password: tutorial
 
 ## Interact with Kaazing JavaScript AMQP Client API
