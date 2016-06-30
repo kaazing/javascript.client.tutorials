@@ -21,9 +21,9 @@ This JavaScript application communicates with a JMS server via Kaazing WebSocket
 
 __Note:__ To test basic authentication for the connection to the Gateway use the URL `wss://sandbox.kaazing.net/jms-auth` for location.
 
-username: tutorial
-password: tutorial
-
+</br>
+username: tutorial </br>
+password: tutorial 
 ## Interact with Kaazing JavaScript WebSocket Client API
 
 Documentation on how to create Kaazing JavaScript JMS applications from scratch can be found [here] (http://kaazing.com/doc/5.0/jms_client_docs/dev-js/o_dev_js.html)
