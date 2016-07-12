@@ -53,7 +53,9 @@ function createDestination(name, session) {
 		return session.createQueue(name);
 	}
 	else {
-		throw new Error("Destination must start with /topic/ or /queue/");
+		var e = "Destination must start with /topic/ or /queue/";
+		log("<span class='error'>" + e + "</span>");
+		throw new Error(e);
 	}
 }
 
@@ -109,20 +111,8 @@ function handleDisconnect() {
 	disconnect.disabled = "disabled";
 
 	// Clear any subscriptions.
-	if (document.getElementsByClassName) {
-		var subscriptions = document.getElementsByClassName("unsubscribeButton");
-		while (subscriptions[0]) {
-			subscriptions[0].click();
-		}
-	} else {
-		// The IE way.
-		var unsubscribeButtons = subscriptionsTable.getElementsByTagName("button");
-		while (unsubscribeButtons.length > 0) {
-			var b = unsubscribeButtons[0];
-			if (b.className == "unsubscribeButton") {
-				b.click();
-			}
-		}
+	if (subscribe.innerHTML == "Unsubscribe") {
+		subscribe.click();
 	}
 
 	log("CLOSE");
@@ -138,51 +128,7 @@ function handleDisconnect() {
 }
 
 function handleSubscribe() {
-	var name = destination.value;
-
-	var destinationId = destinationCounter++;
-
-	log("SUBSCRIBE: " + name + " <span class=\"subscriptionTag\">[#" + destinationId + "]</span>");
-
-	var dest = createDestination(name, session);
-
-	var consumer;
-
-	if (messageSelector.value.length > 0) {
-		consumer = session.createConsumer(dest, messageSelector.value);
-	} else {
-		consumer = session.createConsumer(dest);
-	}
-
-	consumer.setMessageListener(function (message) {
-		handleMessage(name, destinationId, message);
-	});
-
-	// Add a row to the subscriptions table.
-	//
-
-	var tBody = subscriptionsTable.tBodies[0];
-
-	var rowCount = tBody.rows.length;
-	var row = tBody.insertRow(rowCount);
-
-	var destinationCell = row.insertCell(0);
-	destinationCell.className = "destination";
-	destinationCell.appendChild(document.createTextNode(name + " "));
-	var destNode = document.createElement("span");
-	destNode.className = "subscriptionTag";
-	destNode.innerHTML = "[#" + destinationId + "]";
-	destinationCell.appendChild(destNode);
-
-	var messageSelectorCell = row.insertCell(1);
-	messageSelectorCell.className = "selector";
-	messageSelectorCell.appendChild(document.createTextNode(messageSelector.value));
-
-	var unsubscribeCell = row.insertCell(2);
-	var unsubscribeButton = document.createElement("button");
-	unsubscribeButton.className = "unsubscribeButton";
-	unsubscribeButton.innerHTML = "Unsubscribe";
-	unsubscribeButton.addEventListener('click', function (event) {
+	var unsubscribe = function (event) {
 		var targ;
 		if (event.target) {
 			targ = event.target;
@@ -193,10 +139,62 @@ function handleSubscribe() {
 		if (consumer) {
 			consumer.close(null);
 		}
-		var rowIndex = targ.parentElement.parentElement.rowIndex
+
+		subscribe.innerHTML = "Subscribe";
+		destination.disabled = false;
+		
+		var rowIndex = row.rowIndex;
 		subscriptionsTable.deleteRow(rowIndex);
-	}, false);
-	unsubscribeCell.appendChild(unsubscribeButton);
+
+		subscribe.removeEventListener("click", unsubscribe);
+	}
+
+	if (subscribe.innerHTML == "Subscribe") {
+		var name = destination.value;
+
+		var destinationId = destinationCounter++;
+
+		log("SUBSCRIBE: " + name + " <span class=\"subscriptionTag\">[#" + destinationId + "]</span>");
+
+		var dest = createDestination(name, session);
+
+		var consumer;
+
+		if (messageSelector.value.length > 0) {
+			consumer = session.createConsumer(dest, messageSelector.value);
+		} else {
+			consumer = session.createConsumer(dest);
+		}
+
+		consumer.setMessageListener(function (message) {
+			handleMessage(name, destinationId, message);
+		});
+
+		subscribe.innerHTML = "Unsubscribe";
+		destination.disabled = true;
+
+		// Add a row to the subscriptions table.
+		//
+
+		var tBody = subscriptionsTable.tBodies[0];
+
+		var rowCount = tBody.rows.length;
+		var row = tBody.insertRow(rowCount);
+
+		var destinationCell = row.insertCell(0);
+		destinationCell.className = "destination";
+		destinationCell.appendChild(document.createTextNode(name + " "));
+		var destNode = document.createElement("span");
+		destNode.className = "subscriptionTag";
+		destNode.innerHTML = "[#" + destinationId + "]";
+		destinationCell.appendChild(destNode);
+
+		var messageSelectorCell = row.insertCell(1);
+		messageSelectorCell.className = "selector";
+		messageSelectorCell.appendChild(document.createTextNode(messageSelector.value));
+
+		subscribe.addEventListener('click', unsubscribe, false);
+	}
 }
 
 function handleMessage(destination, destinationId, message) {
