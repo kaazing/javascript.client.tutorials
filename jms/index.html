@@ -14,292 +14,283 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<link rel="icon" href="images/favicon.ico">
-	<title>Kaazing | Demos</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="icon" href="images/favicon.ico">
+  <title>Kaazing | Demos</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/dev.css">
-	<link rel="stylesheet" href="css/demo.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/dev.css">
+  <link rel="stylesheet" href="css/demo.css">
 
-	<script src="node_modules/jquery/dist/jquery.js"></script>
-	<script src="node_modules/npm-modernizr/modernizr.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-<!--[if lt IE 9]>
-<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
-	improve your experience.</p>
-<![endif]-->
 
 <div class="header-container">
-	<header class="wrapper clearfix">
-		<a href="http://www.kaazing.com" target="_blank">
-			<div class="title logo"></div>
-		</a>
-	</header>
+  <header class="wrapper clearfix">
+    <a href="http://www.kaazing.com" target="_blank">
+      <div class="title logo"></div>
+    </a>
+  </header>
 </div>
 
 <div class="main-container ">
-	<div class="main wrapper clearfix">
+  <div class="main wrapper clearfix">
 
-		<div class="powered-wrapper">
-			<div class="powered-header"></div>
-		</div>
+    <div class="powered-wrapper">
+      <div class="powered-header"></div>
+    </div>
 
-		<!-- End header -->
+    <!-- End header -->
 
-		<article>
+    <article>
 
 
-			<section>
+      <section>
 
-				<!--  Kaazing scripts -->
+        <!--  Kaazing scripts -->
+        <script src="https://cdn.kaazing.com/releases/enterprise.javascript.client/4.1.0/WebSocket.js"></script>
+        <script src="https://cdn.kaazing.com/releases/enterprise.javascript.client/4.1.0/JmsClient.js"></script>
 
-				<script type="text/javascript" language="javascript"
-						src="node_modules/kaazing-javascript-gateway-client/WebSocket.js"></script>
-				<script type="text/javascript" language="javascript"
-						src="node_modules/kaazing-javascript-jms-client/JmsClient.js"></script>
+        <script type="text/javascript" src="js/jms.js" language="javascript"></script>
 
-				<script type="text/javascript" src="js/jms.js" language="javascript"></script>
+        <h1>JavaScript JMS Messaging Demo</h1>
+        <br/>
 
-				<h1>JavaScript JMS Messaging Demo</h1>
-				<br/>
+        <div id="jms-javascript">
+          <div id="middle">
 
-				<div id="jms-javascript">
-					<div id="middle">
+            <div class="leftPanels">
 
-						<div class="leftPanels">
+              <div id="login_div" class="panel">
+                <span class="info">User name and password values are optional</span>
 
-							<div id="login_div" class="panel">
-								<span class="info">User name and password values are optional</span>
+                <label for="url">Location</label><input id="url"/><br/>
+                <label for="username">Username</label><input id="username"><br/>
+                <label for="password">Password</label><input type="password" id="password"><br/>
+                <label></label>
+                <div id="sso_logindiv"
+                   style="margin-left: 2px; position: absolute; border: 1px solid black; border-radius:10px; display: none; height: 190px; width: 318px; background-color:#d0e7fd; z-index: 999;">
+                  <div style="margin-left: 20px; height: 35px; margin-top: 20px; font-weight: bold;">
+                    Login
+                  </div>
+                  <div
+                    style="height: 124px; width: 296px; border: 1px solid black; border-radius:10px; background-color:white; margin-left: 10px;">
+                    <div style="margin-left:10px; margin-top: 10px;">
+                      <span style="width: 60px; font-size:11pt;">Username:</span><input
+                      id="sso_username" size="12" style="width: 180px" value=""/>
+                    </div>
+                    <div style="margin-left:10px">
+                      <span style="width: 60px;  font-size:11pt;">Password:</span><input
+                      id="sso_password" type="password" size="12" style="width: 180px" value=""/>
+                    </div>
+                    <div style="margin-left:45px">
+                      <button id="sso_login" style="margin-left:25px; width: 60px;">OK</button>
+                      <button id="sso_cancel" style="margin-left:25px; width: 60px;">Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <button id="connect">Connect</button>
+                <button id="disconnect">Close</button>
+              </div>
+              <div id="subscribe_div" class="panel">
+                <span class="info">Subscribe, set message selectors, send messages, and add message properties</span><br/>
 
-								<label for="url">Location</label><input id="url"/><br/>
-								<label for="username">Username</label><input id="username"><br/>
-								<label for="password">Password</label><input type="password" id="password"><br/>
-								<label></label>
-								<div id="sso_logindiv"
-									 style="margin-left: 2px; position: absolute; border: 1px solid black; border-radius:10px; display: none; height: 190px; width: 318px; background-color:#d0e7fd; z-index: 999;">
-									<div style="margin-left: 20px; height: 35px; margin-top: 20px; font-weight: bold;">
-										Login
-									</div>
-									<div
-										style="height: 124px; width: 296px; border: 1px solid black; border-radius:10px; background-color:white; margin-left: 10px;">
-										<div style="margin-left:10px; margin-top: 10px;">
-											<span style="width: 60px; font-size:11pt;">Username:</span><input
-											id="sso_username" size="12" style="width: 180px" value=""/>
-										</div>
-										<div style="margin-left:10px">
-											<span style="width: 60px;  font-size:11pt;">Password:</span><input
-											id="sso_password" type="password" size="12" style="width: 180px" value=""/>
-										</div>
-										<div style="margin-left:45px">
-											<button id="sso_login" style="margin-left:25px; width: 60px;">OK</button>
-											<button id="sso_cancel" style="margin-left:25px; width: 60px;">Cancel
-											</button>
-										</div>
-									</div>
-								</div>
-								<button id="connect">Connect</button>
-								<button id="disconnect">Close</button>
-							</div>
-							<div id="subscribe_div" class="panel">
-								<span class="info">Subscribe, set message selectors, send messages, and add message properties</span><br/>
+                <label for="destination">Destination</label><input id="destination"
+                                           value="/topic/destination"><br/>
+                <label for="messageSelector">Message Selector</label><input id="messageSelector"
+                                              value=""
+                                              placeholder="Example: symbol='KZNG'"><br/>
+                <label></label>
+                <button id="subscribe">Subscribe</button>
+                <br/><br/>
 
-								<label for="destination">Destination</label><input id="destination"
-																				   value="/topic/destination"><br/>
-								<label for="messageSelector">Message Selector</label><input id="messageSelector"
-																							value=""
-																							placeholder="Example: symbol='KZNG'"><br/>
-								<label></label>
-								<button id="subscribe">Subscribe</button>
-								<br/><br/>
+                <label for="message">Message</label><input id="message" value="Hello, message"><br/>
+                <label>Custom Property</label><input id="propName1" value=""
+                                      placeholder="Property name"
+                                      class="halfWidth"/><input id="propValue1"
+                                                    value=""
+                                                    placeholder="Property value"
+                                                    class="halfWidth propValue"/>
+                <label>Custom Property</label><input id="propName2" value=""
+                                      placeholder="Property name"
+                                      class="halfWidth"/><input id="propValue2"
+                                                    value=""
+                                                    placeholder="Property value"
+                                                    class="halfWidth propValue"/>
+                <label>Custom Property</label><input id="propName3" value=""
+                                      placeholder="Property name"
+                                      class="halfWidth"/><input id="propValue3"
+                                                    value=""
+                                                    placeholder="Property value"
+                                                    class="halfWidth propValue"/>
+                <label for="binary">Binary </label><input type="checkbox" id="binary" class="cb"><br/>
+                <label></label>
+                <button id="send">Send</button>
+              </div>
 
-								<label for="message">Message</label><input id="message" value="Hello, message"><br/>
-								<label>Custom Property</label><input id="propName1" value=""
-																			placeholder="Property name"
-																			class="halfWidth"/><input id="propValue1"
-																									  value=""
-																									  placeholder="Property value"
-																									  class="halfWidth propValue"/>
-								<label>Custom Property</label><input id="propName2" value=""
-																			placeholder="Property name"
-																			class="halfWidth"/><input id="propValue2"
-																									  value=""
-																									  placeholder="Property value"
-																									  class="halfWidth propValue"/>
-								<label>Custom Property</label><input id="propName3" value=""
-																			placeholder="Property name"
-																			class="halfWidth"/><input id="propValue3"
-																									  value=""
-																									  placeholder="Property value"
-																									  class="halfWidth propValue"/>
-								<label for="binary">Binary </label><input type="checkbox" id="binary" class="cb"><br/>
-								<label></label>
-								<button id="send">Send</button>
-							</div>
+            </div>
 
-						</div>
+            <div class="rightPanels">
 
-						<div class="rightPanels">
+              <div id="console_div" class="panel">
+                <div class="info">
+                  <div style="float: left;">
+                    Log messages
+                  </div>
+                  <div style="float: right; margin-right: 5px;">
+                    Messages received : <span id="receivedMessageCount">0</span>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div id="console"></div>
+                <button id="clear">Clear Log</button>
+                <input type="checkbox" id="toggleJmsHeadersCb" class="cb" checked="checked"
+                     style="margin-left: 20px;"><label for="toggleJmsHeadersCb">Show JMS
+                headers</label>
+              </div>
 
-							<div id="console_div" class="panel">
-								<div class="info">
-									<div style="float: left;">
-										Log messages
-									</div>
-									<div style="float: right; margin-right: 5px;">
-										Messages received : <span id="receivedMessageCount">0</span>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div id="console"></div>
-								<button id="clear">Clear Log</button>
-								<input type="checkbox" id="toggleJmsHeadersCb" class="cb" checked="checked"
-									   style="margin-left: 20px;"><label for="toggleJmsHeadersCb">Show JMS
-								headers</label>
-							</div>
+            </div>
 
-						</div>
+            <div class="clearfix"></div>
 
-						<div class="clearfix"></div>
+            <div id="bottomPanelRow">
 
-						<div id="bottomPanelRow">
+              <div class="leftPanels">
 
-							<div class="leftPanels">
+                <div id="transaction_div" class="panel">
+                  <span class="info">Send messages as a single transaction</span><br/>
 
-								<div id="transaction_div" class="panel">
-									<span class="info">Send messages as a single transaction</span><br/>
+                  <label for="txDestination">Destination</label><input id="txDestination"
+                                             value="/topic/destination"><br/>
+                  <label for="txMessage">Message</label><input id="txMessage"
+                                         value="Hello, transaction"><br/>
+                  <label for="binaryTransaction">Binary </label><input type="checkbox"
+                                             id="binaryTransaction"
+                                             class="cb"><br/>
 
-									<label for="txDestination">Destination</label><input id="txDestination"
-																						 value="/topic/destination"><br/>
-									<label for="txMessage">Message</label><input id="txMessage"
-																				 value="Hello, transaction"><br/>
-									<label for="binaryTransaction">Binary </label><input type="checkbox"
-																						 id="binaryTransaction"
-																						 class="cb"><br/>
+                  <label></label>
+                  <button id="txSend">Send</button>
+                  <button id="commit">Commit</button>
+                  <button id="rollback">Rollback</button>
+                </div>
 
-									<label></label>
-									<button id="txSend">Send</button>
-									<button id="commit">Commit</button>
-									<button id="rollback">Rollback</button>
-								</div>
+              </div>
 
-							</div>
+              <div class="rightPanels">
 
-							<div class="rightPanels">
+                <div id="subscriptions_div" class="panel">
+                  <span class="info">Active subscriptions</span>
 
-								<div id="subscriptions_div" class="panel">
-									<span class="info">Active subscriptions</span>
+                  <table id="subscriptions">
 
-									<table id="subscriptions">
+                    <thead>
 
-										<thead>
+                    <tr>
+                      <th class="destination">Destination</th>
+                      <th class="selector">Message Selector</th>
+                      <th></th>
+                    </tr>
 
-										<tr>
-											<th class="destination">Destination</th>
-											<th class="selector">Message Selector</th>
-											<th></th>
-										</tr>
+                    </thead>
 
-										</thead>
+                    <tbody>
 
-										<tbody>
+                    </tbody>
 
-										</tbody>
+                  </table>
 
-									</table>
+                </div>
 
-								</div>
+              </div>
 
-							</div>
+              <div class="clearfix"></div>
 
-							<div class="clearfix"></div>
+            </div>
 
-						</div>
+          </div><!-- middle -->
+        </div><!-- jms-javascript -->
 
-					</div><!-- middle -->
-				</div><!-- jms-javascript -->
+      </section>
 
-			</section>
+    </article>
 
-		</article>
+    <!-- Start footer -->
 
-		<!-- Start footer -->
-
-	</div> <!-- #main -->
+  </div> <!-- #main -->
 </div> <!-- #main-container -->
 
 <div class="footer-container">
-	<footer class="wrapper">
+  <footer class="wrapper">
 
-		<div class="section group">
-			<div class="items col span_1_of_5">
-				<h3><a href="http://www.kaazing.com/products/">Kaazing.com</a></h3>
-				<ul>
-					<li><a href="http://www.kaazing.com/products/kaazing-websocket-gateway/">Overview</a></li>
-					<li><a href="http://www.kaazing.com/products/editions/">Product Editions</a></li>
-					<li><a href="http://www.kaazing.com/products/benefits-and-roi/">Benefits & ROI</a></li>
-					<li><a href="http://www.kaazing.com/products/deployment-options/">Deployment Options</a></li>
-					<li><a href="http://developer-stage.kaazing.com/product-demos/">Online Demos</a></li>
-					<li><a href="http://www.kaazing.com/websocket/">WebSocket</a></li>
-				</ul>
-			</div>
-			<div class="items col span_1_of_5">
-				<h3><a href="http://developer.kaazing.com/">Developer</a></h3>
-				<ul>
-					<li><a href="http://developer.kaazing.com/whykaazing/">Why Kaazing</a></li>
-					<li><a href="http://developer.kaazing.com/downloads/">Downloads</a></li>
-					<li><a href="http://developer.kaazing.com/how-tos/">Tech Papers</a></li>
-					<li><a href="http://developer.kaazing.com/forums/">Forums</a></li>
-					<li><a href="http://developer.kaazing.com/product-demos/">Product Demos</a></li>
-					<li><a href="http://tech.kaazing.com/documentation/faq.html">FAQ</a></li>
-					<li><a href="http://tech.kaazing.com/documentation/index.html">Documentation</a></li>
-				</ul>
-			</div>
-			<div class="items col span_1_of_5">
-				<h3><a href="http://www.kaazing.com/services/">Services</a></h3>
-				<ul>
-					<li><a href="http://www.kaazing.com/services/kaazing-global-support/">Support</a></li>
-					<li><a href="http://www.kaazing.com/services/consulting/">Consulting</a></li>
-					<li><a href="http://www.kaazing.com/services/training/">Training</a></li>
-				</ul>
-			</div>
-			<div class="items col span_1_of_5">
-				<h3><a href="http://www.kaazing.com/cloud/">Cloud</a></h3>
-				<ul>
-					<li><a href="http://www.kaazing.com/cloud/amis/">AWS AMIS</a></li>
-					<li><a href="http://www.kaazing.com/cloud/faq/">AWS FAQS</a></li>
-				</ul>
-			</div>
-			<div id="contact" class="col span_1_of_5">
-				<h3>Get in Touch</h3>
-				<div class="contact-details">
-					<p>T +1 (877)&shy; KAAZING<br/>
-						T +1 (877)&shy; 522-9464<br/>
-						F +1 (650)&shy; 960-8145</p>
+    <div class="section group">
+      <div class="items col span_1_of_5">
+        <h3><a href="http://www.kaazing.com/products/">Kaazing.com</a></h3>
+        <ul>
+          <li><a href="http://www.kaazing.com/products/kaazing-websocket-gateway/">Overview</a></li>
+          <li><a href="http://www.kaazing.com/products/editions/">Product Editions</a></li>
+          <li><a href="http://www.kaazing.com/products/benefits-and-roi/">Benefits & ROI</a></li>
+          <li><a href="http://www.kaazing.com/products/deployment-options/">Deployment Options</a></li>
+          <li><a href="http://developer-stage.kaazing.com/product-demos/">Online Demos</a></li>
+          <li><a href="http://www.kaazing.com/websocket/">WebSocket</a></li>
+        </ul>
+      </div>
+      <div class="items col span_1_of_5">
+        <h3><a href="http://developer.kaazing.com/">Developer</a></h3>
+        <ul>
+          <li><a href="http://developer.kaazing.com/whykaazing/">Why Kaazing</a></li>
+          <li><a href="http://developer.kaazing.com/downloads/">Downloads</a></li>
+          <li><a href="http://developer.kaazing.com/how-tos/">Tech Papers</a></li>
+          <li><a href="http://developer.kaazing.com/forums/">Forums</a></li>
+          <li><a href="http://developer.kaazing.com/product-demos/">Product Demos</a></li>
+          <li><a href="http://tech.kaazing.com/documentation/faq.html">FAQ</a></li>
+          <li><a href="http://tech.kaazing.com/documentation/index.html">Documentation</a></li>
+        </ul>
+      </div>
+      <div class="items col span_1_of_5">
+        <h3><a href="http://www.kaazing.com/services/">Services</a></h3>
+        <ul>
+          <li><a href="http://www.kaazing.com/services/kaazing-global-support/">Support</a></li>
+          <li><a href="http://www.kaazing.com/services/consulting/">Consulting</a></li>
+          <li><a href="http://www.kaazing.com/services/training/">Training</a></li>
+        </ul>
+      </div>
+      <div class="items col span_1_of_5">
+        <h3><a href="http://www.kaazing.com/cloud/">Cloud</a></h3>
+        <ul>
+          <li><a href="http://www.kaazing.com/cloud/amis/">AWS AMIS</a></li>
+          <li><a href="http://www.kaazing.com/cloud/faq/">AWS FAQS</a></li>
+        </ul>
+      </div>
+      <div id="contact" class="col span_1_of_5">
+        <h3>Get in Touch</h3>
+        <div class="contact-details">
+          <p>T +1 (877)&shy; KAAZING<br/>
+            T +1 (877)&shy; 522-9464<br/>
+            F +1 (650)&shy; 960-8145</p>
 
-					<p>Worldwide Headquarters<br/>
-						Kaazing Corporation<br/>
-						6001 America Center Drive<br/>
-						Suite 201<br/>
-						San Jose, CA 95002, USA</p>
-				</div>
-			</div>
-		</div>
+          <p>Worldwide Headquarters<br/>
+            Kaazing Corporation<br/>
+            6001 America Center Drive<br/>
+            Suite 201<br/>
+            San Jose, CA 95002, USA</p>
+        </div>
+      </div>
+    </div>
 
-		<div class="k-bottom clearfix">
-			<a href="#">
-				<div class="logo"></div>
-			</a>
-			<div class="copyright"><!--[if lte IE 7]>&copy; 2007 - 2016 Kaazing Corporation. All Rights Reserved.
-				<![endif]--></div>
-			<div class="powered-footer"></div>
-		</div>
-	</footer>
+    <div class="k-bottom clearfix">
+      <a href="#">
+        <div class="logo"></div>
+      </a>
+      <div class="copyright"><!--[if lte IE 7]>&copy; 2007 - 2016 Kaazing Corporation. All Rights Reserved.
+        <![endif]--></div>
+      <div class="powered-footer"></div>
+    </div>
+  </footer>
 </div>
 </body>
 </html>
