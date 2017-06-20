@@ -74,8 +74,8 @@ function handleConnect() {
 
 						log("CONNECTED");
 
-						session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-						transactedSession = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+						session = connection.createSession(false, Kaazing.Session.AUTO_ACKNOWLEDGE);
+						transactedSession = connection.createSession(true, Kaazing.Session.AUTO_ACKNOWLEDGE);
 
 						connection.start(function () {
 							updateConnectionButtons(true);
@@ -202,15 +202,15 @@ function handleSubscribe() {
 function handleMessage(destination, destinationId, message) {
 	var content = "";
 
-	if (message instanceof TextMessage) {
+	if (message instanceof Kaazing.TextMessage) {
 		content = "RECEIVED TextMessage: " + message.getText();
 	}
-	else if (message instanceof BytesMessage) {
+	else if (message instanceof Kaazing.BytesMessage) {
 		var body = [];
 		message.readBytes(body);
 		content = "RECEIVED BytesMessage: " + body;
 	}
-	else if (message instanceof MapMessage) {
+	else if (message instanceof Kaazing.MapMessage) {
 		var keys = message.getMapNames();
 		content = "RECEIVED MapMessage: <br/>";
 
@@ -299,10 +299,10 @@ var buildJMSHeadersDiv = function (message, receive) {
 	headersDiv.className = "headers";
 	var deliveryModeStr;
 	switch (message.getJMSDeliveryMode()) {
-		case DeliveryMode.NON_PERSISTENT:
+		case Kaazing.DeliveryMode.NON_PERSISTENT:
 			deliveryModeStr = "NON_PERSISTENT";
 			break;
-		case DeliveryMode.PERSISTENT:
+		case Kaazing.DeliveryMode.PERSISTENT:
 			deliveryModeStr = "PERSISTENT";
 			break;
 		default:
@@ -310,7 +310,7 @@ var buildJMSHeadersDiv = function (message, receive) {
 	}
 
 	var jmsDestination = message.getJMSDestination();
-	var destinationName = (jmsDestination instanceof Queue) ? jmsDestination.getQueueName()
+	var destinationName = (jmsDestination instanceof Kaazing.Queue) ? jmsDestination.getQueueName()
 		: jmsDestination.getTopicName();
 	headersDiv.innerHTML += "JMSDestination: " + destinationName + "<br>";
 
