@@ -26,7 +26,7 @@ password: tutorial
 
 ## Interact with Kaazing JavaScript WebSocket Client API
 
-Documentation on how to create Kaazing JavaScript WebSocket apps from scratch can be found [here] (http://kaazing.com/doc/5.0/websocket_client_docs/dev-js/o_dev_js.html)
+Documentation on how to create Kaazing JavaScript WebSocket apps from scratch can be found [here](http://kaazing.com/doc/5.0/websocket_client_docs/dev-js/o_dev_js.html)
 
 ## API Documentation
 
