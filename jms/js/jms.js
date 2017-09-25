@@ -486,7 +486,7 @@ $(document).ready(function () {
 	subscriptionsTable = document.getElementById("subscriptions");
 
 	// construct the WebSocket location
-	var locationURI = new URI("wss://sandbox.kaazing.net/jms");
+	var locationURI = new URI("wss://demos.kaazing.com/jms");
 	// default the location
 	url.value = locationURI.toString();
 
