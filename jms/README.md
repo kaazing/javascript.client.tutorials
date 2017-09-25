@@ -8,9 +8,9 @@ Open `index.html` in a browser. It doesn't need to be hosted, you can open it fr
 
 ### If you don't have Kaazing WebSocket Gateway installed
 
-Connect using the default URL, `wss://sandbox.kaazing.net/jms`, which will connect to a hosted Kaazing WebSocket Gateway for demo purposes.
+Connect using the default URL, `wss://demos.kaazing.com/jms`, which will connect to a hosted Kaazing WebSocket Gateway for demo purposes.
 
-To test basic authentication for the connection to the Gateway use the URL `wss://sandbox.kaazing.net/jms-auth`. When prompted, use the following credentials:
+To test basic authentication for the connection to the Gateway use the URL `wss://demos.kaazing.com/jms-auth`. When prompted, use the following credentials:
 
 Username: tutorial
 Password: tutorial
