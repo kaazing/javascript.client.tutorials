@@ -19,7 +19,7 @@ This JavaScript application communicates with an `Echo` service hosted by Kaazin
 * Enter `node server.js` to run the included Node.js server component (server.js).
 * In a browser, open the URL `http://localhost:3000/`.
 
-__Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/echo-auth` for location. </br>
+__Note:__ To test basic authentication for the Gateway connection use the URL `wss://demos.kaazing.com/echo-auth` for location. </br>
 username: tutorial </br>
 password: tutorial 
 
