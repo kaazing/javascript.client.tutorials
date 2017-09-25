@@ -54,7 +54,7 @@ function popupLoginDialog(callback) {
 
 function setup() {
 
-	var locationURI = new URI("wss://sandbox.kaazing.net/echo");
+	var locationURI = new URI("wss://demos.kaazing.com/echo");
 	var websocket;
 
 	var consoleLog = document.getElementById("consoleLog");
