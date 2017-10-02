@@ -19,7 +19,7 @@ sudo npm install npm -g
 * Enter `node server.js` to run the included Node.js server component (server.js).
 * In a browser, open the URL `http://localhost:3000/`.
  
-__Note:__ To test basic authentication in the app use the URL `wss://demos.kaazing.com/amqp091-auth` for location.
+__Note:__ To test basic authentication in the app use the URL `wss://demos.kaazing.com/amqp-auth` for location.
 </br>
 username: tutorial</br>
 password: tutorial
