@@ -2,18 +2,34 @@
 
 This JavaScript application communicates with a JMS server via Kaazing WebSocket Gateway. The application publishes text messages to the server and listens for the messages from the broker over WebSocket.
 
-## Running the demo
+## Minimum Requirements for Running or Building
 
-Open `index.html` in a browser. It doesn't need to be hosted, you can open it from the filesystem.
+* Node.js version 4.4 and higher
+* NPM v 3.9.5 and higher
+
+To update NPM to the latest version:
+`
+sudo npm install npm -g
+`
+
+## Steps for Building and Running the Project
+
+* In a terminal, navigate to the folder for a tutorial, such as `javascript.client.tutorials/jms`.
+* Enter `npm install` to build the tutorial.
+* Enter `node server.js` to run the included Node.js server component (server.js).
+* In a browser, open the URL `http://localhost:3000/`.
+
+If you want to run the demo without using npm, open `index.html` in a browser. It doesn't need to be hosted, you can open it from the filesystem.
+
+__Note:__ To test basic authentication in the app use the URL `wss://demos.kaazing.com/jms-auth` for location.
+</br>
+username: tutorial</br>
+password: tutorial
+
 
 ### If you don't have Kaazing WebSocket Gateway installed
 
 Connect using the default URL, `wss://demos.kaazing.com/jms`, which will connect to a hosted Kaazing WebSocket Gateway for demo purposes.
-
-To test basic authentication for the connection to the Gateway use the URL `wss://demos.kaazing.com/jms-auth`. When prompted, use the following credentials:
-
-Username: tutorial
-Password: tutorial
 
 ### If you have Kaazing WebSocket Gateway installed
 
