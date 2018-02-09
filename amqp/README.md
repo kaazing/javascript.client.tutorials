@@ -26,7 +26,7 @@ password: tutorial
 
 ## Interact with Kaazing JavaScript AMQP Client API
 
-Documentation on how to create a Kaazing JavaScript WebSocket AMQP app from scratch can be found [here](http://kaazing.com/doc/5.0/amqp_client_docs/dev-js/o_dev_js.html).
+Documentation on how to create a Kaazing JavaScript WebSocket AMQP app from scratch can be found [here](https://kaazing.com/doc/5.0/amqp_client_docs/dev-js/p_dev_js_client.html).
 
 ## API Documentation
 
